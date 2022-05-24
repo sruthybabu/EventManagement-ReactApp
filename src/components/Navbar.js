@@ -15,11 +15,12 @@ const Navbar = () => {
       <ul className="navbar-nav">
         <li className="nav-item">
             <Link to="/" className="nav-link active">Add Events</Link>
-         
         </li>
         <li className="nav-item">
             <Link to="/search" className="nav-link">Search Events</Link>
-          
+        </li>
+        <li className="nav-item">
+            <Link to="/view" className="nav-link">View Events</Link>
         </li>
         
       </ul>
