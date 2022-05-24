@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import Navbar from './Navbar'
 
 const Addevents = () => {
     var [eventname,setName]=useState("")
@@ -25,6 +26,7 @@ const Addevents = () => {
     }
   return (
     <div>
+        <Navbar/>
         <div className="container">
     <div className="row">
         <div className="col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
