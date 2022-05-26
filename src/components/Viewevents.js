@@ -1,30 +1,18 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 
 const Viewevents = () => {
-    var viewlist=[
-        {
-            "eventName":"wedding",
-            "date":5/30/2022,
-            "venue":"st.george auditorium",
-            "organiser":"sandeep",
-            "contactNo":8964753210
-        },
-        {
-            "eventName":"naming ceremoney",
-            "date":6/7/2022,
-            "venue":"town hall",
-            "organiser":"arun",
-            "contactNo":9964756721
-        },
-        {
-            "eventName":"reunion",
-            "date":6/2/2022,
-            "venue":"town hall",
-            "organiser":"saran",
-            "contactNo":9884773211
-        }
-    ]
+    var [viewlist,setViewlist]=useState([])
+    var [loadstatus,setLoadstatus]=useState(true)
+    axios.get("http://localhost:5001/api/eventview").then(
+      (response)=>{
+        console.log(response.data)
+        setViewlist(response.data)
+        setLoadstatus(false)
+
+      }
+    )
    
   return (
     <div>
@@ -34,8 +22,10 @@ const Viewevents = () => {
                 <div className='col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12'>
                     <div className='row g-3'>
                         <div className='col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12'>
-                         <table class="table table-primary table-striped">
-  <thead>
+                         {loadstatus ? <div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div> : <table className="table table-primary table-striped">
+  <thead className='table-success'>
     <tr>
       <th scope="col">Event Name</th>
       <th scope="col">Date</th>
@@ -55,7 +45,7 @@ const Viewevents = () => {
     </tr>
     })}   
   </tbody>
-</table>
+</table>}
 
                         </div>
 
