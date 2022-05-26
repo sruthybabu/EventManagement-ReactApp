@@ -31,7 +31,7 @@ const Addevents = () => {
             <div className="row g-3">
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label for="" className="form-label">Event Name</label>
-                    <input onChange={(e)=>{setName(e.target.value)}} placeholder="Eneter name" type="text" className="form-control"/>
+                    <input onChange={(e)=>{setName(e.target.value)}} placeholder="Enter name" type="text" className="form-control"/>
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label for="" className="form-label">Date</label>
