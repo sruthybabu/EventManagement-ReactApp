@@ -3,6 +3,23 @@ import React, { useState } from 'react'
 import Navbar from './Navbar'
 
 const Viewevents = () => {
+  const deleteData=(id)=>{
+    const data={"_id":id}
+    console.log(data)
+    axios.post("http://localhost:5001/api/delete",data).then(
+        (response)=>{
+            if(response.data.status=="success")
+            {
+                alert("Successfully deleted")
+            }
+            else
+            {
+                alert("Failed to delete")
+
+            }
+        })
+}
+
     var [viewlist,setViewlist]=useState([])
     var [loadstatus,setLoadstatus]=useState(true)
     axios.get("http://localhost:5001/api/eventview").then(
@@ -32,6 +49,7 @@ const Viewevents = () => {
       <th scope="col">Venue</th>
       <th scope="col">Organiser</th>
       <th scope="col">Contact Number</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -42,6 +60,7 @@ const Viewevents = () => {
       <td>{value.venue}</td>
       <td>{value.organiser}</td>
       <td>{value.contactNo}</td>
+      <td><button onClick={()=>{deleteData(value._id)}} className='btn btn-danger'>DELETE</button></td>
     </tr>
     })}   
   </tbody>
