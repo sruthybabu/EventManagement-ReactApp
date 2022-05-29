@@ -6,7 +6,7 @@ const Searchevent = () => {
     const deleteData=(id)=>{
         const data={"_id":id}
         console.log(data)
-        axios.post("http://localhost:5001/api/delete",data).then(
+        axios.post("http://localhost:5001/api/search",data).then(
             (response)=>{
                 if(response.data.status=="success")
                 {
@@ -18,6 +18,7 @@ const Searchevent = () => {
 
                 }
             })
+
 
     }
     const [data,setData]=useState([{"eventName":"","venue":"","organiser":"","contactNo":""}])
@@ -65,7 +66,7 @@ const Searchevent = () => {
                        <input value={value.contactNo} type="text" className='form-control'/>
                     </div>
                     <div className='col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12'>
-                        <button onClick={()=>{deleteData(value,_id)}} className='btn btn-danger'>DELETE</button>
+                        <button onClick={()=>{deleteData(value._id)}} className='btn btn-danger'>DELETE</button>
                     </div>
                 </div>
 
